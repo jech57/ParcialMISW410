@@ -6,4 +6,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 2%;
+  display: flex;
+  justify-content: center; /* Centra horizontalmente el contenedor */
+  align-items: flex-start; /* Alinea el contenido al inicio vertical */
+  min-height: 100vh; /* Opcional: asegura que el body ocupe al menos la altura de la pantalla */
 }

@@ -3,10 +3,11 @@
 img {
     width:100%;
     max-width: 1200px;
+    min-width: 480px;
 }
 
 header {
-    margin-bottom: 2%;
+    margin-bottom: 3rem;
     margin-left: 5%;
 }
 

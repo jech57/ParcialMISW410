@@ -1,21 +1,4 @@
-/* tslint:disable:no-unused-variable 
-
-import { TestBed, inject } from '@angular/core/testing';
-import { CoffeeService } from './coffee.service';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-
-describe('Service: Coffee', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [CoffeeService]
-    });
-  });
-
-  it('should be created', inject([CoffeeService], (service: CoffeeService) => {
-    expect(service).toBeTruthy();
-  }));
-});*/
+/* tslint:disable:no-unused-variable */
 
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
@@ -25,7 +8,7 @@ import { environment } from '../../environments/environment.development';
 
 describe('Service: Coffee', () => {
   let service: CoffeeService;
-  let httpMock: HttpTestingController;  // Usamos esto para mockear las peticiones HTTP
+  let httpMock: HttpTestingController;
 
   const mockCoffees: Coffee[] = [
     { id: 1, nombre: 'Café Espresso', tipo: 'Blend', region: 'Colombia', sabor: 'Intenso', altura: 1200, imagen: 'url-imagen' },
@@ -34,16 +17,15 @@ describe('Service: Coffee', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],  // Simula las peticiones HTTP
+      imports: [HttpClientTestingModule],
       providers: [CoffeeService]
     });
 
     service = TestBed.inject(CoffeeService);
-    httpMock = TestBed.inject(HttpTestingController);  // Accedemos al controlador HTTP para mockear
+    httpMock = TestBed.inject(HttpTestingController);
   });
 
   afterEach(() => {
-    // Verifica que no haya ninguna solicitud HTTP pendiente
     httpMock.verify();
   });
 
@@ -53,14 +35,13 @@ describe('Service: Coffee', () => {
 
   it('should return an array of coffees when getCoffees is called', () => {
     service.getCoffees().subscribe(coffees => {
-      expect(coffees.length).toBe(2);  // Debería tener 2 cafés
-      expect(coffees).toEqual(mockCoffees);  // Comparar los datos
+      expect(coffees.length).toBe(2);
+      expect(coffees).toEqual(mockCoffees); 
     });
 
-    // Simulamos la respuesta HTTP
     const req = httpMock.expectOne(`${environment.baseUrl}`);
-    expect(req.request.method).toBe('GET');  // Verificar que el método sea GET
-    req.flush(mockCoffees);  // Le decimos al mock que devuelva los datos
+    expect(req.request.method).toBe('GET');
+    req.flush(mockCoffees);
   });
 
   it('should handle error when the API fails', () => {
@@ -69,7 +50,7 @@ describe('Service: Coffee', () => {
     service.getCoffees().subscribe(
       () => fail('expected an error, not coffees'),
       (error) => {
-        expect(error.status).toBe(500);  // Verificamos que el error sea el esperado
+        expect(error.status).toBe(500);
         expect(error.statusText).toBe('Internal Server Error');
       }
     );
