@@ -29,8 +29,6 @@ export class CoffeeComponent implements OnInit {
             this.originCoffees++;
           }
         }
-
-        console.log(this.coffees);
       },
       (error) => {
         console.error('Error fetching coffee data', error);
