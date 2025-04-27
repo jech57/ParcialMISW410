@@ -1,3 +1,25 @@
-<p>
-  coffee works!
-</p>
+<div class="row">
+  <div class="col-xl-6 col-lg-9 col-md-12 col-sm-12 col-12">
+    <table class="table">
+      <thead>
+        <tr class="table-dark">
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Región</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let coffe of coffees">
+          <th>{{coffe.id}}</th>
+          <td>{{coffe.nombre}}</td>
+          <td>{{coffe.tipo}}</td>
+          <td>{{coffe.region}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Total café de origen: {{this.originCoffees}}</p>
+  <p>Total café blend: {{this.blendCoffees}}</p>
+</div>

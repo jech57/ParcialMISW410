@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&display=swap');
+
+img {
+    width:100%;
+    max-width: 1200px;
+}
+
+header {
+    margin-bottom: 2%;
+    margin-left: 5%;
+}
+
+.header-title {
+    font-family: "Comic Relief", system-ui;
+    font-weight: 100;
+    font-style: normal;
+}
